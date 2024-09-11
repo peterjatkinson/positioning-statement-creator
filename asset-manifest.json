@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/positioning-statement-creator/static/css/main.05294819.css",
+    "main.js": "/positioning-statement-creator/static/js/main.e84847d7.js",
+    "static/js/453.9fe6a174.chunk.js": "/positioning-statement-creator/static/js/453.9fe6a174.chunk.js",
+    "index.html": "/positioning-statement-creator/index.html",
+    "main.05294819.css.map": "/positioning-statement-creator/static/css/main.05294819.css.map",
+    "main.e84847d7.js.map": "/positioning-statement-creator/static/js/main.e84847d7.js.map",
+    "453.9fe6a174.chunk.js.map": "/positioning-statement-creator/static/js/453.9fe6a174.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.05294819.css",
+    "static/js/main.e84847d7.js"
+  ]
+}
