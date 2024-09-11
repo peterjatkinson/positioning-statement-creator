@@ -54,7 +54,7 @@ const PositioningStatementCreator = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-blue-100 rounded-lg shadow-2xl">
+    <div className="max-w-4xl w-full mx-auto p-8 bg-blue-100 rounded-lg shadow-2xl">
       <h1 className="text-4xl font-extrabold mb-6 text-gray-700 text-center">
         Positioning statement creator
         <Sparkles className={`inline-block ml-2 ${animateSparkle ? 'animate-spin' : ''} text-yellow-400`} />
