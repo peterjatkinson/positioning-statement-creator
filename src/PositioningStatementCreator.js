@@ -70,75 +70,76 @@ const PositioningStatementCreator = () => {
   };
 
   return (
-    <div className="max-w-4xl w-full mx-auto p-8 bg-blue-100 rounded-lg shadow-2xl" role="form" aria-labelledby="form-title">
-      <h1 id="form-title" className="text-4xl font-extrabold mb-6 text-gray-700 text-center">
-        Positioning statement creator
-        <Sparkles className={`inline-block ml-2 ${animateSparkle ? 'animate-spin' : ''} text-yellow-400`} aria-hidden="true" />
-      </h1>
+    <form className="max-w-4xl w-full mx-auto p-8 bg-blue-100 rounded-lg shadow-2xl" aria-labelledby="form-title">
+  <h1 id="form-title" className="text-4xl font-extrabold mb-6 text-gray-700 text-center">
+    Positioning Statement Creator
+    <Sparkles className={`inline-block ml-2 ${animateSparkle ? 'animate-spin' : ''} text-yellow-400`} aria-hidden="true" />
+  </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"> 
-        {Object.entries(formData).map(([key, value]) => (
-          <div key={key} className="relative">
-            <label htmlFor={key} className="sr-only">{getPlaceholder(key)}</label> 
-            <input
-              type="text"
-              id={key}
-              name={key}
-              value={value}
-              onChange={handleInputChange}
-              placeholder={getPlaceholder(key)}
-              className="w-full p-3 border-2 border-blue-300 rounded-lg bg-white bg-opacity-50 text-gray-700 placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition duration-300"
-              aria-required="true"
-            />
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-
-      <div className="bg-white bg-opacity-50 p-6 rounded-lg shadow-inner mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-gray-700">Your positioning statement:</h2>
-        <textarea
-          ref={textareaRef}
-          value={generateStatement()}
-          readOnly
-          aria-readonly="true"
-          className="w-full p-4 border-2 border-blue-300 rounded-lg bg-white bg-opacity-50 text-gray-700 focus:outline-none focus:border-yellow-400 transition duration-300 h-48 md:h-32 resize-none" 
-          aria-label="Generated positioning statement"
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    {Object.entries(formData).map(([key, value]) => (
+      <div key={key} className="relative">
+        <label htmlFor={key} className="sr-only">{getPlaceholder(key)}</label>
+        <input
+          type="text"
+          id={key}
+          name={key}
+          value={value}
+          onChange={handleInputChange}
+          placeholder={getPlaceholder(key)}
+          className="w-full p-3 border-2 border-blue-300 rounded-lg bg-white bg-opacity-50 text-gray-700 placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-100 transition duration-300"
+          aria-required="true"
         />
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+          <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+        </div>
       </div>
+    ))}
+  </div>
 
 
-      <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-        <button
-          ref={copyButtonRef}
-          onClick={copyToClipboard}
-          className={`px-6 py-3 rounded-full flex items-center ${
-            copied ? 'bg-green-400' : 'bg-yellow-300'
-          } text-gray-700 font-bold text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50`}
-          aria-label="Copy to clipboard" // Static aria-label for button
-        >
-          {copied ? <Check className="mr-2" aria-hidden="true" /> : <Copy className="mr-2" aria-hidden="true" />}
-          {copied ? 'Copied!' : 'Copy to clipboard'}
-        </button>
+  <div className="bg-white bg-opacity-50 p-6 rounded-lg shadow-inner mb-8">
+    <h2 className="text-2xl font-bold mb-4 text-gray-700">Your positioning statement:</h2>
+    <textarea
+      ref={textareaRef}
+      value={generateStatement()}
+      readOnly
+      aria-readonly="true"
+      className="w-full p-4 border-2 border-blue-300 rounded-lg bg-white bg-opacity-50 text-gray-700 focus:outline-none focus:border-yellow-400 focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-100 transition duration-300 h-48 md:h-32 resize-none"
+      aria-label="Generated positioning statement"
+    />
+  </div>
 
-        <button
-          onClick={resetForm}
-          className="px-6 py-3 rounded-full flex items-center bg-red-600 text-white font-bold text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
-          aria-label="Reset the form"
-        >
-          <RefreshCw className="mr-2" aria-hidden="true" />
-          Reset
-        </button>
-      </div>
+  <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+    <button
+      type="button"  // Add this to prevent form submission
+      ref={copyButtonRef}
+      onClick={copyToClipboard}
+      className={`px-6 py-3 rounded-full flex items-center ${
+        copied ? 'bg-green-400' : 'bg-yellow-300'
+      } text-gray-700 font-bold text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-100`}
+      aria-label="Copy to clipboard"
+    >
+      {copied ? <Check className="mr-2" aria-hidden="true" /> : <Copy className="mr-2" aria-hidden="true" />}
+      {copied ? 'Copied!' : 'Copy to clipboard'}
+    </button>
 
+    <button
+      type="button"  // Add this to prevent form submission
+      onClick={resetForm}
+      className="px-6 py-3 rounded-full flex items-center bg-red-600 text-white font-bold text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-100"
+      aria-label="Reset the form"
+    >
+      <RefreshCw className="mr-2" aria-hidden="true" />
+      Reset
+    </button>
+  </div>
 
-      <div aria-live="assertive" className="sr-only">
-        {ariaMessage}
-      </div>
-    </div>
+  <div aria-live="assertive" className="sr-only">
+    {ariaMessage}
+  </div>
+</form>
+
   );
 };
 
